@@ -1,15 +1,15 @@
-import java.util.Scanner;
+import java.util.*;
+import java.io.*;
 public class prog {
 	/* 
 	 * Copy-pasting code is NOT cool! Please do not copy and paste my code as a submission to DMOJ.
 	 * github.com/jdabtieu/competitive-programming
 	 */
-	static Scanner in = new Scanner(System.in);
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
+	    BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
 		for (int i = 0; i < 5; i++) {
-			int velA = in.nextInt();
-			int velB = in.nextInt();
-			
+			int velA = Integer.parseInt(in.readLine());
+			int velB = Integer.parseInt(in.readLine());
 			if (Math.abs(velA) > 2 * Math.abs(velB)) {
 				int yPos = 25 + 50 * velB / Math.abs(velA);
 				if (velA > 0) {
@@ -28,5 +28,4 @@ public class prog {
 		}
 
 	}
-
 }
