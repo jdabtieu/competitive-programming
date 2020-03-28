@@ -1,4 +1,3 @@
-import java.util.*;
 import java.io.*;
 public class Main {
 	/* 
@@ -6,20 +5,18 @@ public class Main {
 	 * github.com/jdabtieu/competitive-programming
 	 */
 	public static void main(String[] args) throws IOException {
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		StringTokenizer in = new StringTokenizer(br.readLine());
-		ArrayList<Integer> xC = new ArrayList<Integer>();
-		ArrayList<Integer> yC = new ArrayList<Integer>();
-		for (int i = Integer.parseInt(in.nextToken()); i > 0; i--) {
-			in = new StringTokenizer(br.readLine());
-			String[] temp = in.nextToken().split(",");
-			xC.add(Integer.parseInt(temp[0]));
-			yC.add(Integer.parseInt(temp[1]));
+		BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+		int drops = Integer.parseInt(in.readLine());
+		int x0 = 101, x1 = -1, y0 = 101, y1 = -1;
+		for (byte i = 0; i < drops; i++) {
+			String[] temp = in.readLine().split(",");
+			if (Integer.parseInt(temp[0]) < x0) x0 = Integer.parseInt(temp[0]);
+			if (Integer.parseInt(temp[0]) > x1) x1 = Integer.parseInt(temp[0]);
+			if (Integer.parseInt(temp[1]) < y0) y0 = Integer.parseInt(temp[1]);
+			if (Integer.parseInt(temp[1]) > y1) y1 = Integer.parseInt(temp[1]);
 		}
-		Collections.sort(xC);
-		Collections.sort(yC);
-		System.out.println((xC.get(0) - 1) +"," + (yC.get(0) - 1));
-		System.out.println((xC.get(xC.size() - 1) + 1) +"," + (yC.get(yC.size() - 1) + 1));
+		System.out.println((x0-1) + "," + (y0-1));
+		System.out.println((x1+1) + "," + (y1+1));
 	}
 
 }

@@ -1,12 +1,17 @@
 import java.util.*;
+import java.io.*;
 public class Main {
 	/* 
 	 * Copy-pasting code is NOT cool! Please do not copy and paste my code as a submission to DMOJ.
 	 * github.com/jdabtieu/competitive-programming
 	 */
-    public static void main(String args[]) { 
-    	Scanner in = new Scanner(System.in);
-		String a = in.next(), b = in.next();
+    public static void main(String args[]) throws IOException { 
+    	BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
+		String a = in.readLine(), b = in.readLine();
+		if (a.equals(b)) {
+		    System.out.println("LARRY IS DEAD!");
+		    System.exit(0);
+		}
 		boolean excuse = true;
 		for (int i = 0; i < a.length(); i++) {
 		    if (a.charAt(i) != b.charAt(i)) {
@@ -17,7 +22,7 @@ public class Main {
 		        }
 		    }
 		}
-		System.out.println(excuse ? "LARRY IS DEAD!" : "LARRY IS SAVED!");
+		System.out.println("LARRY IS SAVED!");
     } 
 
 }
