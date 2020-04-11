@@ -1,17 +1,17 @@
 import java.util.*;
+import java.io.*;
 public class Main {
 	/* 
 	 * Copy-pasting code is NOT cool! Please do not copy and paste my code as a submission to DMOJ.
 	 * github.com/jdabtieu/competitive-programming
 	 */
-	static Scanner in = new Scanner(System.in);
-	public static void main(String[] args) {
-	    int sum = 0;
-		for (int i = in.nextInt(); i > 0; i--) {
-			sum += in.nextInt();
+	public static void main(String[] args) throws IOException {
+	    	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+	    	int sum = 0;
+		for (int i = Integer.parseInt(br.readLine()); i > 0; i--) {
+			sum += Integer.parseInt(br.readLine());
 		}
 		System.out.println(sum);
 
 	}
-
 }
