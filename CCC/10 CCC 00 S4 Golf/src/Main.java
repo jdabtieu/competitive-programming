@@ -10,7 +10,7 @@ public class Main {
 	static StringTokenizer in;
 
 	public static void main(String[] args) throws IOException {
-		short distance = readShort();
+		int distance = readInt();
 		byte[] clubs = new byte[readInt()];
 		for (int i = 0; i < clubs.length; i++) {
 			clubs[i] = readByte();

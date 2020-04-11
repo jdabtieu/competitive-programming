@@ -10,7 +10,7 @@ public class Main {
 		String a = in.readLine(), b = in.readLine();
 		if (a.equals(b)) {
 		    System.out.println("LARRY IS DEAD!");
-		    System.exit(0);
+		    return;
 		}
 		boolean excuse = true;
 		for (int i = 0; i < a.length(); i++) {
