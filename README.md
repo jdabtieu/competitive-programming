@@ -3,7 +3,7 @@ This repository contains all of the programs I submitted to DMOJ (dmoj\.ca), inc
 
 Source code locations:
 
-root\\CATEGORY\\DMOJ-POINT-VALUE EXACT\\src\\\*\.\*
+root\\CATEGORY\\DMOJ-POINT-VALUE EXACT NAME\\src\\\*\.\*
 
 or if \\src\\ doesn't exist, root\\CATEGORY\\DMOJ-POINT-VALUE EXACT-NAME\\\*\.\*
 
