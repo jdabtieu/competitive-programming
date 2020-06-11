@@ -1,6 +1,7 @@
 import java.math.*;
 import java.util.*;
 public class SeqOlogn {
+//https://www.khanacademy.org/computing/computer-science/cryptography/modarithmetic/a/fast-modular-exponentiation
 	/* 
 	 * Copy-pasting code is NOT cool! Please do not copy and paste my code as a submission to DMOJ.
 	 * github.com/jdabtieu/competitive-programming
