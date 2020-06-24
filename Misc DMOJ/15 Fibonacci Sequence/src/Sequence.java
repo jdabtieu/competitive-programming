@@ -1,53 +1,68 @@
-import java.math.BigInteger;
+import java.io.*;
+import java.math.*;
 import java.util.*;
+
 public class Sequence {
 	/* 
 	 * Copy-pasting code is NOT cool! Please do not copy and paste my code as a submission to DMOJ.
 	 * github.com/jdabtieu/competitive-programming
-	 * Currently in progress
+	 * Warning: This is not a functional solution. This problem is still a work in progress.
 	 */
-	static final long[][] newMat = {{1, 1}, {1, 0}};
-	static long[][] M = {{1, 1}, {1, 0}};
-	static final BigInteger TWO = new BigInteger("2");
-	static final BigInteger mobius = new BigInteger("30000000");
-	public static void power(BigInteger num) { 
-	    if(num.compareTo(TWO) < 0) return; 
-	    if (num.compareTo(mobius) < 0) {
-	    	fib(num);
-	    	return;
-	    } else {
-	    	power(num.divide(new BigInteger("2"))); 
-		    multiply(M, M);
-		    if (num.mod(new BigInteger("2")).compareTo(BigInteger.ZERO) != 0) multiply(M, newMat); 
-	    }
-    } 
+	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+	static StringTokenizer in;
 	
-	public static void multiply(long m1[][], long m2[][]) { 
-	    long i =  m1[0][0] * m2[0][0] + m1[0][1] * m2[1][0]; 
-	    long j =  m1[0][0] * m2[0][1] + m1[0][1] * m2[1][1]; 
-	    long k =  m1[1][0] * m2[0][0] + m1[1][1] * m2[1][0]; 
-	    long l =  m1[1][0] * m2[0][1] + m1[1][1] * m2[1][1];
-	    m1[0][0] = i % 1000000007; 
-	    m1[0][1] = j % 1000000007; 
-	    m1[1][0] = k % 1000000007; 
-	    m1[1][1] = l % 1000000007; 
-	} 
+	static BigInteger TWO = new BigInteger("2");
+	static final long modulus = 1000000007;
+	static long[] matrix = {1, 1, 1, 0};
+	static long[] result = {1, 0, 0, 1};
 	
-	public static void main(String[] args) {
-		Scanner in = new Scanner(System.in);
-		BigInteger num = new BigInteger(in.next());
-	    if (num.compareTo(BigInteger.ZERO) == 0) {
-	    	System.out.println(0);
-	    	System.exit(0);
-	    }
-	    power(num.subtract(BigInteger.ONE));
-	    System.out.println(M[0][0]);
+	public static void main(String[] args) throws IOException {
+		BigInteger num = new BigInteger(next());
+		if (num.compareTo(BigInteger.ZERO) == 0) {
+			System.out.println(0);
+			return;
+		}
+		matrixPow(num);
+		System.out.println(result[1]);
 	}
 
-	
-	public static void fib(BigInteger num) {
-	    for (BigInteger i = BigInteger.ONE; i.compareTo(num) != 0; i = i.add(BigInteger.ONE)) {
-	    	multiply(M, newMat);
-	    }
-	    }
+
+	public static void matrixPow(BigInteger num) {
+		while (num.compareTo(BigInteger.ZERO) != 0) {
+			if (num.mod(TWO).compareTo(BigInteger.ONE) == 0) result = mult(result, matrix);
+			num = num.divide(TWO);
+			matrix = mult(matrix, matrix);
+		}
+	}
+
+	public static long[] mult(long[] x, long[] y) {
+		return new long[] {((x[0] * y[0]) % modulus + (x[1] * y[2]) % modulus) % modulus, ((x[0] * y[1]) % modulus + (x[1] * y[3]) % modulus) % modulus,
+				((x[2] * y[0]) % modulus + (x[3] * y[2]) % modulus) % modulus, ((x[2] * y[1]) % modulus + (x[3] * y[3]) % modulus) % modulus};
+	}
+
+	static String next() throws IOException {
+		while (in == null || !in.hasMoreTokens())
+			in = new StringTokenizer(br.readLine());
+		return in.nextToken();
+	}
+
+	static long readLong() throws IOException {
+		return Long.parseLong(next());
+	}
+
+	static int readInt() throws IOException {
+		return Integer.parseInt(next());
+	}
+
+	static double readDouble() throws IOException {
+		return Double.parseDouble(next());
+	}
+
+	static char readChar() throws IOException {
+		return next().charAt(0);
+	}
+
+	static String readLine() throws IOException {
+		return br.readLine();
+	}
 }

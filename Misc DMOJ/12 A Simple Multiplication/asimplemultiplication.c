@@ -12,19 +12,19 @@ int main() {
     int a, b, c; scanf("%i %i %i", &a, &b, &c);
     char *binB = binConvert(b);
     int bDigits = strlen(binB);
-    int sums[bDigits];
-    sums[0] = a;
-    for (int i = 1; i < bDigits; i++) {
-        sums[i] = (int) (((long) sums[i - 1] * sums[i - 1]) % c);
-    }
+    int sums = a;
     int res = 1;
-    for (int i = 0; i < bDigits; i++) {
+    if (binB[0] != '0') res = sums;
+
+    for (int i = 1; i < bDigits; i++) {
+        sums = (int) (((long) sums * sums) % c);
         if (binB[i] != '0') {
-            res = (int) ((res * (long) sums[i]) % c);
+            res = (int) ((res * (long) sums) % c);
         }
     }
     if (res < 0) res += c;
     printf("%i\n", res);
+    free(binB);
 }
 
 
