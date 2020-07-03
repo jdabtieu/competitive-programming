@@ -1,0 +1,1 @@
+/* Copy-pasting code is NOT cool! Please do not copy and paste my code as a submission to DMOJ. github.com/jdabtieu/competitive-programming */import java.io.*;public class quine {public static void main(String[] args) throws IOException {BufferedReader br = new BufferedReader(new FileReader("quine.java"));System.out.println(br.readLine());}}

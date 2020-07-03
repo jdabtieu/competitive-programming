@@ -1,1 +1,7 @@
+# Eclipse files
 bin/
+.classpath
+.project
+
+# Temporary files
+/TLE/
