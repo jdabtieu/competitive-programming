@@ -1,6 +1,6 @@
 import java.io.*;
 import java.util.*;
-public class PrefixNotation {
+public class ecoo12r3p3 {
 	/* 
 	 * Copy-pasting code is NOT cool! Please do not copy and paste my code as a submission to DMOJ.
 	 * github.com/jdabtieu/competitive-programming

@@ -8,55 +8,25 @@ public class ccc07s4 {
 	 */
 	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	static StringTokenizer in;
-
-	static class Pair implements Comparable<Pair> {
-		int val, source;
-		Pair (int v, int src) {
-			val = v;
-			source = src;
-		}
-		@Override
-		public int compareTo(Pair p) {
-			if (p.val > val) return 1;
-			return p.val < val ? -1 : 0;
-		}
-		@Override
-		public boolean equals(Object o) {
-			if (o instanceof Pair) {
-				Pair p = (Pair) o;
-				return p.val == val && p.source == source;
-			}
-			return false;
-		}
-	}
-	
 	
 	public static void main(String[] args) throws IOException {
-		ArrayList<ArrayList<Integer>> children = new ArrayList<ArrayList<Integer>>();
-		ArrayList<ArrayList<Pair>> parents = new ArrayList<ArrayList<Pair>>();
+		ArrayList<ArrayList<Integer>> parents = new ArrayList<ArrayList<Integer>>();
 		int points = readInt();
 		int[] paths = new int[points + 1];
 		paths[points] = 1;
 		
 		for (int i = 0; i <= points; i++) {
-			children.add(new ArrayList<Integer>());
-			parents.add(new ArrayList<Pair>());
+			parents.add(new ArrayList<Integer>());
 		}
 		
 		while (true) {
 			int a = readInt(), b = readInt();
 			if (a == 0 && b == 0) break;
-			children.get(a).add(b);
-			parents.get(b).add(new Pair(a, b));
+			parents.get(b).add(a);
 		}
 		
-		
-		PriorityQueue<Pair> queue = new PriorityQueue<Pair>();
-		for (int i = 0; i < parents.get(points).size(); i++) queue.offer(parents.get(points).get(i));
-		while (!queue.isEmpty()) {
-			Pair point = queue.poll();
-			paths[point.val] += paths[point.source];
-			for (int i = 0; i < parents.get(point.val).size(); i++) if (!queue.contains(parents.get(point.val).get(i))) queue.add(parents.get(point.val).get(i));
+		for (int i = points; i > 0; i--) for (int p : parents.get(i)) {
+			paths[p] += paths[i];
 		}
 		
 		System.out.println(paths[1]);

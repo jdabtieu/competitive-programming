@@ -1,5 +1,5 @@
 import java.util.*;
-public class Mothers {
+public class ecoo14r3p2 {
 	/* 
 	 * Copy-pasting code is NOT cool! Please do not copy and paste my code as a submission to DMOJ.
 	 * github.com/jdabtieu/competitive-programming

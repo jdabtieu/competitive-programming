@@ -1,13 +1,9 @@
-This repository contains all of the programs I submitted to DMOJ (dmoj\.ca), including CCC problems\.
-
+This repository contains all of the programs I submitted to DMOJ (dmoj.ca), including CCC problems.
 
 Source code locations:
 
-root\\CATEGORY\\DMOJ-POINT-VALUE EXACT NAME\\src\\\*\.\*
+root\\CATEGORY\\PROBLEM-ID\\src\\\*\.\*
 
-or if \\src\\ doesn't exist, root\\CATEGORY\\DMOJ-POINT-VALUE EXACT-NAME\\\*\.\*
+PROBLEM-ID is the id that uniquely identifies problems. For example, the problem with id aplusb is found at dmoj.ca/problem/aplusb.
 
-EXACT NAME is the name the problem has on DMOJ, minus any non-alphanumeric or space characters\.
-It also does not include problem number (eg\. P1) for all contests except ones with seperate Junior/Senior sections\.
-
-Alternatively, you can search for the problem ID.
+I am currently restructuring this repository so if you cannot find a problem by its ID, try looking for the problem name instead.
