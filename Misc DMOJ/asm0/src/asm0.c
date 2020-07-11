@@ -1,10 +1,9 @@
 #include <stdio.h>
-#include <stdlib.h>
-int main(void) {
-    int *a = (int *)malloc(sizeof(int)), *b = (int *)malloc(sizeof(int)), *c = (int *)malloc(sizeof(int));
-    scanf("%i %i %i", a, b, c);
-    printf("%i\n", (*a + *b + *c) / 3);
-    free(a);
-    free(b);
-    free(c);
+/* 
+ * Copy-pasting code is NOT cool! Please do not copy and paste my code as a submission to DMOJ.
+ * github.com/jdabtieu/competitive-programming
+ */
+int main() {
+    int a, b, c; scanf("%i %i %i", &a, &b, &c);
+    printf("%i\n", (a + b + c) / 3);
 }
