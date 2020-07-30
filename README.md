@@ -7,3 +7,9 @@ root\\CATEGORY\\PROBLEM-ID\\src\\\*\.\*
 PROBLEM-ID is the id that uniquely identifies problems. For example, the problem with id aplusb is found at dmoj.ca/problem/aplusb.
 
 I am currently restructuring this repository so if you cannot find a problem by its ID, try looking for the problem name instead.
+
+List of folders still not done being restructured:<br>
+Misc DMOJ<br>
+DWITE<br>
+DMOPC<br>
+CCC
