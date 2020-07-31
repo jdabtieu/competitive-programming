@@ -10,6 +10,5 @@ I am currently restructuring this repository so if you cannot find a problem by 
 
 List of folders still not done being restructured:<br>
 Misc DMOJ<br>
-DWITE<br>
 DMOPC<br>
 CCC
