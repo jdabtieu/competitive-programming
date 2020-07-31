@@ -12,7 +12,7 @@ The judge will run `main.c`. You must interact with the judge with a solution th
 ## Solving Process
 First we should check if this is 32-bit or 64-bit, as buffer overflow attacks differ between these two. I'm pretty sure it is 64-bit but it's best to check anyways. `$ file 98972d672b0bcd184c0c6769bb083863-main` shows that it is indeed x86-64. Now let's take a look at main.c.
 
-The first line in main, `printf("%p\n", win);`, prints the memory location of win, thte program we want to call.<br>
+The first line in main, `printf("%p\n", win);`, prints the memory location of win, the program we want to call.<br>
 The next line, `fflush(stdout)` simple flushes stdout, and has no impact on the program.<br>
 The third line calls vuln, so let's take a look at that.
 
@@ -105,7 +105,7 @@ I'm going to run this command in a new terminal window to craft an input for the
 
 The -e tells bash we are inserting hex values (\x{your hex here}) which you can see as \xaa\x48.... Then, we redirect the output of this command to a file called input.
 
-Going back to the original window iwth gdb, I'm now going to run `(gdb) r < input` which tells it to run the program, using the file `input` as input. If gdb prompts you to start it from the beginning, type in y. 
+Going back to the original window with gdb, I'm now going to run `(gdb) r < input` which tells it to run the program, using the file `input` as input. If gdb prompts you to start it from the beginning, type in y. 
 
 Now that it's reached the breakpoint, let's check the value of the return address, using `(gdb) x/16xw $rbp`
 ```
