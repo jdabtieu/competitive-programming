@@ -105,7 +105,7 @@ I'm going to run this command in a new terminal window to craft an input for the
 
 The -e tells bash we are inserting hex values (\x{your hex here}) which you can see as \xaa\x48.... Then, we redirect the output of this command to a file called input.
 
-Going back to the original window iwth gdb, I'm now going to run `(gdb) r < input` which tells it to run the program, using the file `input` as input. If gdb prompts you to start it from the beginning, type in y. 
+Going back to the original window with gdb, I'm now going to run `(gdb) r < input` which tells it to run the program, using the file `input` as input. If gdb prompts you to start it from the beginning, type in y. 
 
 Now that it's reached the breakpoint, let's check the value of the return address, using `(gdb) x/16xw $rbp`
 ```
