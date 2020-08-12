@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class PrimeChecker {
+public class bf3 {
 	/* 
 	 * Copy-pasting code is NOT cool! Please do not copy and paste my code as a submission to DMOJ.
 	 * github.com/jdabtieu/competitive-programming

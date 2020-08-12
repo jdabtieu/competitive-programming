@@ -1,5 +1,5 @@
 import java.util.*;
-public class Main {
+public class bf2 {
 	/*
 	 * Copy-pasting code is NOT cool! Please do not copy and paste my code as a submission to DMOJ.
 	 * github.com/jdabtieu/competitive-programming
