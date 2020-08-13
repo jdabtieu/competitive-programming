@@ -10,18 +10,12 @@ bool prime(int n);
 int main() {
     int n; scanf("%d", &n);
 
-    if (n < 2) {
+    if (n <= 2) {
         printf("%d", 2);
         return 0;
     }
 
-    if (n % 2 == 0) {
-        if (n == 2) {
-            printf("%d", n);
-            return 0;
-        }
-        else n++;
-    }
+    if (n % 2 == 0) n++;
 
     for (; true; n += 2) {
         if (prime(n)) {
