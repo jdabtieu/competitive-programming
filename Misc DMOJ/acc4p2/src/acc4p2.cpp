@@ -2,6 +2,6 @@
 
 using namespace std;
 
-string f() {
-    return "All Kill";
+bool f(int N) {
+    return N % 2;
 }

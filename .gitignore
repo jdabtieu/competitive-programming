@@ -3,7 +3,7 @@ bin/
 .classpath
 .project
 
-# Temporary files
+# Incomplete problems
 /TLE/
 /ECOO/ecoo20p4/
 /Misc DMOJ/rollencrypt/
@@ -12,3 +12,4 @@ bin/
 /DMOPC/7 DMOPC 18 Contest 4 Dr Henri and Responsibility/
 /DMOPC/7 DMOPC 18 Contest 5 A Photography Problem/
 /Misc DMOJ/phantom3/
+/CCO/cco08p5/
