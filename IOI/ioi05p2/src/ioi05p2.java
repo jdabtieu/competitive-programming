@@ -31,15 +31,13 @@ public class ioi05p2 {
              * co = a + a - co
              */
             if (i % 2 == 0) {
-                int tmp = b - a - a + co;
-                if (tmp < upperBound) upperBound = tmp;
+                upperBound = Math.min(upperBound, b - a - a + co);
             } else {
-                int tmp = a + a - co - b;
-                if (tmp > lowerBound) lowerBound = tmp;
+                lowerBound = Math.max(lowerBound, a + a - co - b);
             }
             if (upperBound < lowerBound) {
                 System.out.println(0);
-                System.exit(0);
+                return;
             }
             co = a + a - co;
             a = b;

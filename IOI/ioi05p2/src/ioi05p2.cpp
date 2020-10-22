@@ -27,7 +27,7 @@ int main() {
         }
         if (upperBound < lowerBound) {
             printf("0\n");
-            exit(0);
+            return 0;
         }
         co = a + a - co;
         a = b;
