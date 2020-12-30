@@ -1,11 +1,16 @@
-#include <bits/stdc++.h>
+#include <stdio.h>
+#include <time.h>
+#include <stdlib.h>
+#include <math.h>
 /*
  * Copy-pasting code is NOT cool! Please do not copy and paste my code as a submission to DMOJ.
  * github.com/jdabtieu/competitive-programming
  */
 
 #define llu unsigned long long
-using namespace std;
+#define bool int
+#define false 0
+#define true 1
 
 const llu SMALL_PRIME_PRODUCT = 152125131763605LL;
 
@@ -17,7 +22,7 @@ llu qpow(llu a, llu n, llu m);
 
 int main() {
     int ceiling = 479909;
-    bool A[ceiling] = {0};
+    bool A[479909] = {0};
     for (int i = 2; i < sqrt(ceiling); i++) if (!A[i]) {
         for (int j = i * i; j < ceiling; j += i) A[j] = true;
     }
