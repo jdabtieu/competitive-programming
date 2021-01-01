@@ -13,22 +13,23 @@ public class phantom3 {
     
     static void sieve(int ceiling) {
         int MAX_SIZE = ceiling + 1;
-        BitSet primality = new BitSet(MAX_SIZE);
+        boolean[] primality = new boolean[MAX_SIZE];
         
         //Set initial primality
-        primality.set(2, MAX_SIZE);
+        primality[0] = true;
+        primality[1] = true;
         
         //Only need to check up to sqrt(int)
         int sr = (int) Math.sqrt(ceiling);
         //Populate primeNumbers and factors if i is prime
         for (int i = 2; i <= sr; i++) {
-            if (primality.get(i)) {
+            if (!primality[i]) {
                 primeNumbers.add(i);
-                for (int j = i * i; j <= ceiling; j += i) primality.clear(j);
+                for (int j = i * i; j <= ceiling; j += i) primality[j] = true;
             }
         }
         //Add remaining primes
-        for (int i = sr + 1; i < MAX_SIZE; i++) if (primality.get(i)) primeNumbers.add(i);
+        for (int i = sr + 1; i < MAX_SIZE; i++) if (!primality[i]) primeNumbers.add(i);
         
         //System.out.println(primeNumbers.size());
     }
@@ -41,11 +42,15 @@ public class phantom3 {
         primality.set(0, diff);
         for (int prime : primeNumbers) {
             long start = 0;
-            if (prime == floor) start = prime;
-            else start = (long) (Math.ceil((double) floor / prime) * prime) - floor;
+            if (prime == floor) {
+                start = prime;
+            } else {
+                start = (long) (Math.ceil((double) floor / prime) * prime) - floor;
+            }
             if (start + floor == prime) start += prime;
-            
-            for (; start < diff; start += prime) primality.clear((int) start);
+            for (; start < diff; start += prime) {
+                primality.clear((int) start);
+            }
         }
         
         int count = primality.cardinality();
