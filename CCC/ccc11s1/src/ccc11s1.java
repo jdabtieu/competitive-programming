@@ -1,6 +1,10 @@
 import java.io.*;
 import java.util.*;
 public class ccc11s1 {
+    /* 
+     * Copy-pasting code is NOT cool! Please do not copy and paste my code as a submission to DMOJ.
+     * github.com/jdabtieu/competitive-programming
+     */
 	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	static StringTokenizer in;
 	
