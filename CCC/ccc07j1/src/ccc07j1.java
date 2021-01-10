@@ -1,12 +1,15 @@
+import java.util.Arrays;
 import java.util.Scanner;
-public class Main {
+
+public class ccc07j1 {
 	/* 
 	 * Copy-pasting code is NOT cool! Please do not copy and paste my code as a submission to DMOJ.
 	 * github.com/jdabtieu/competitive-programming
 	 */
-	static Scanner in = new Scanner(System.in);
 	public static void main(String[] args) {
-		int age1 = in.nextInt();
-		System.out.println(2 * in.nextInt() - age1);
-	}
+        Scanner in = new Scanner(System.in);
+        int[] a = {in.nextInt(), in.nextInt(), in.nextInt()};
+        Arrays.sort(a);
+        System.out.println(a[1]);
+    }
 }
