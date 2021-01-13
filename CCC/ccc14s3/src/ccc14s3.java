@@ -1,53 +1,65 @@
-import java.util.Scanner;
-import java.util.ArrayList;
-public class ccc14s3 {
-	/* 
-	 * Copy-pasting code is NOT cool! Please do not copy and paste my code as a submission to DMOJ.
-	 * github.com/jdabtieu/competitive-programming
-	 */
-	static Scanner in = new Scanner(System.in);
-	public static void main(String[] args) {
-		int numTests = in.nextInt();
-		for (int i = 0; i < numTests; i++) {
-			ArrayList<Integer> position = new ArrayList<Integer>();
-			ArrayList<Integer> branch = new ArrayList<Integer>();
-			
-			int numCars = in.nextInt();
-			int lookingFor = 1;
-			int pushOtherCars = 0;
-			
-			for (int j = 0; j < numCars; j++) {
-				position.add(in.nextInt());
-			}
+import java.util.*;
+import java.io.*;
 
-			for (int j = numCars - 1 + branch.size(); j >= 0; j--) {
-				if (position.get(j) == lookingFor) {
-					pushOtherCars = j + 1;
-					for (int k = position.size() - 1; k >= pushOtherCars; k--) {
-						branch.add(position.get(k));
-						position.remove(k);
-					}
-					position.remove(position.size() - 1);
-					lookingFor++;
-					numCars = position.size();
-					j = numCars;
-				}
-				for (int numCarsInPosition = 1; numCarsInPosition < 2; numCarsInPosition++) {
-					if (branch.size() >= 1 && branch.get(branch.size() - 1) == lookingFor) {
-						branch.remove(branch.size() - 1);
-						lookingFor++;
-						j = numCars;
-						if (position.size() == 0) {
-							numCarsInPosition = 0;
-						}
-					}
-				}
-			}
-			if(branch.size() + position.size() == 0) {
-				System.out.println("Y");
-			} else {
-			System.out.println("N");
-			}
-		}
-	}
+public class ccc14s3 {
+    /* 
+     * Copy-pasting code is NOT cool! Please do not copy and paste my code as a submission to DMOJ.
+     * github.com/jdabtieu/competitive-programming
+     */
+    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    static StringTokenizer in;
+
+    public static void main(String[] args) throws IOException {
+        for (int cases = readInt(); cases > 0; cases--) {
+            boolean flag = true;
+            int cars = readInt();
+            Stack<Integer> top = new Stack<Integer>(), side = new Stack<Integer>();
+            for (int i = 0; i < cars; i++) top.push(readInt());
+            int i = 1;
+            while (!top.empty() || !side.empty()) {
+                if (!side.empty() && side.peek() == i) {
+                    side.pop();
+                    i++;
+                } else {
+                    while (!top.empty() && top.peek() != i) {
+                        side.add(top.pop());
+                    }
+                    if (top.empty()) {
+                        flag = false;
+                        break;
+                    } else {
+                        top.pop();
+                        i++;
+                    }
+                }
+            }
+            System.out.println(flag ? "Y" : "N");
+        }
+    }
+
+    static String next() throws IOException {
+        while (in == null || !in.hasMoreTokens())
+            in = new StringTokenizer(br.readLine());
+        return in.nextToken();
+    }
+
+    static long readLong() throws IOException {
+        return Long.parseLong(next());
+    }
+
+    static int readInt() throws IOException {
+        return Integer.parseInt(next());
+    }
+
+    static double readDouble() throws IOException {
+        return Double.parseDouble(next());
+    }
+
+    static char readChar() throws IOException {
+        return next().charAt(0);
+    }
+
+    static String readLine() throws IOException {
+        return br.readLine();
+    }
 }
