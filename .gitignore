@@ -4,7 +4,7 @@ bin/
 .project
 
 # Incomplete problems
-/TLE/
+/TLE/tle18p1/
 /ECOO/ecoo20p4/
 /Misc DMOJ/rollencrypt/
 /Misc DMOJ/dpy/
