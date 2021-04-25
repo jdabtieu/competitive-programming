@@ -19,7 +19,7 @@ public class ccc21s1 {
         int count = 0;
         for (int i = 1; i <= rows; i++) {
             for (int j = 1; j <= cols; j++) {
-                if (rowL[i] && !colL[j] || !rowL[i] && colL[j]) count++;
+                if (rowL[i] ^ colL[j]) count++;
             }
         }
         System.out.println(count);

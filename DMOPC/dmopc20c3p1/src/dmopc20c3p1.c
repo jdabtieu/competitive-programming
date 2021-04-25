@@ -19,4 +19,5 @@ int main() {
             x[p] = true;
         }
     }
+    puts("YES");
 }
