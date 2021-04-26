@@ -12,28 +12,12 @@ public class ccc05j5 {
             if (s.equals("X")) return;
             int len = s.length();
             while (true) {
-                s = reduce(s);
+                s = s.replaceAll("(AN)+A", "A").replaceAll("B(AN)*AS", "A");
                 if (s.length() == len) break;
                 else len = s.length();
             }
             System.out.println(s.equals("A") ? "YES" : "NO");
         }
-    }
-    
-    static String reduce(String s) {
-        int len = s.length();
-        while (true) {
-            s = s.replaceAll("B(AN)*AS", "A");
-            if (s.length() == len) break;
-            else len = s.length();
-        }
-        len = s.length();
-        while (true) {
-            s = s.replaceAll("(AN)+A", "A");
-            if (s.length() == len) break;
-            else len = s.length();
-        }
-        return s;
     }
 
     static String readLine() throws IOException {
