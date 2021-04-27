@@ -20,18 +20,20 @@ public class dmopc20c5p3 {
         bpos = new int[size+1];
         rpos = new int[size+1];
         rposrange = new Pair[size+1];
+        for (int i = 0; i <= size; i++) rposrange[i] = new Pair(-1, -1);
         for (int i = 0; i < blocks; i++) {
             int r = readInt(), c = readInt();
             bpos[r] = c;
             rpos[c] = r;
-            rposrange[c] = new Pair(r, r);
+            rposrange[c].x = r;
+            rposrange[c].y = r;
         }
         clean();
-        if (rposrange[1] != null && rposrange[1].x == 1) {
+        if (rposrange[1].x == 1) {
             System.out.println("IMPOSSIBLE");
             return;
         }
-        dfs(new Pair(1, 1));
+        dfs();
         
         System.out.println("IMPOSSIBLE");
         // DLRU
@@ -54,7 +56,8 @@ public class dmopc20c5p3 {
             } else if (startx != 0) {
                 // fill
                 for (int j = starty; j <= endy; j++) {
-                    rposrange[j] = new Pair(startx, endx);
+                    rposrange[j].x = startx;
+                    rposrange[j].y = endx;
                 }
                 startx = 0; starty = 0; endx = 0; endy = 0;
             }
@@ -62,38 +65,36 @@ public class dmopc20c5p3 {
         if (startx != 0) {
             // fill
             for (int j = starty; j <= endy; j++) {
-                rposrange[j] = new Pair(startx, endx);
+                rposrange[j].x = startx;
+                rposrange[j].y = endx;
             }
         }
         int ptr = rpos[size], i = size;
-        if (rposrange[size] == null) return;
-        rposrange[size] = new Pair(1, rposrange[size].y);
-        while (i > 0) {
+        if (rposrange[size].x == -1) return;
+        rposrange[size].x = 1;
+        while (i > 1) {
             i--;
             ptr = rpos[i];
-            if (ptr == 0 || rposrange[i] == null) break;
-            // block it off
-            if (!rposrange[i+1].in(ptr)) {
-                break;
-            }
-            rposrange[i] = new Pair(1, rposrange[i].y);
+            if (ptr == 0 || !rposrange[i+1].in(ptr)) break;
+            rposrange[i].x = 1;
         }
         return;
     }
     
-    static void dfs(Pair p) {
-        StringBuilder path = new StringBuilder();
+    static void dfs() {
+        int x = 1, y = 1, ptr = 0;
+        char[] path = new char[2 * size - 2];
         while (true) {
-            if (p.x == size && p.y == size) {
-                System.out.println(path);
+            if (x == size && y == size) {
+                System.out.println(String.valueOf(path));
                 System.exit(0);
             }
-            if (p.y < size && (rposrange[p.y+1] == null || !rposrange[p.y+1].in(p.x))) {
-                path.append('R');
-                p = new Pair(p.x, p.y+1);
-            } else if (p.x < size && (rposrange[p.y] == null || !rposrange[p.y].in(p.x))) {
-                path.append('U');
-                p = new Pair(p.x+1, p.y);
+            if (y < size && !rposrange[y+1].in(x)) {
+                path[ptr++] = 'R';
+                y++;
+            } else if (x < size && !rposrange[y].in(x)) {
+                path[ptr++] = 'U';
+                x++;
             } else {
                 return;
             }
