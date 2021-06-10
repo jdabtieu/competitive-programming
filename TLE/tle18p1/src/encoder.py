@@ -25,6 +25,10 @@
 # @ Also, no decoder provided. I might be nice but I'm not that nice
 # > ...
 # @ Go solve this problem on your own. There are no free answers here
+# > Please! I'll do anything
+# @ Are you sure?
+# > Yes! ANYTHING for the solution
+# @ Solve the problem then. Once you solve it, you'll get the solution
 # > ...
 # @ Good luck
 # > [user] has disconnected.
