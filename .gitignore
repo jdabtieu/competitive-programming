@@ -4,7 +4,6 @@ bin/
 .project
 
 # Incomplete problems
-/TLE/tle18p1/
 /ECOO/ecoo20p4/
 /Misc DMOJ/rollencrypt/
 /Misc DMOJ/dpy/
@@ -13,3 +12,5 @@ bin/
 /DMOPC/7 DMOPC 18 Contest 4 Dr Henri and Responsibility/
 /DMOPC/7 DMOPC 18 Contest 5 A Photography Problem/
 /CCO/cco08p5/
+CCC/ccc21s4/
+COCI/coci19c4p2/
