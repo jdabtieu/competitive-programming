@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 
-public class ccc14s3 {
+public class canada21p3_ {
     /* 
      * Copy-pasting code is NOT cool! Please do not copy and paste my code as a submission to DMOJ.
      * github.com/jdabtieu/competitive-programming
@@ -10,33 +10,34 @@ public class ccc14s3 {
     static StringTokenizer in;
 
     public static void main(String[] args) throws IOException {
+        stacki num = new stacki(100000);
         for (int cases = readInt(); cases > 0; cases--) {
-            boolean flag = true;
-            int cars = readInt();
-            stacki top = new stacki(cars), side = new stacki(cars);
-            for (int i = 0; i < cars; i++) top.push(readInt());
-            int i = 1;
-            while (!top.empty() || !side.empty()) {
-                if (!side.empty() && side.peek() == i) {
-                    side.pop();
-                    i++;
-                } else {
-                    while (!top.empty() && top.peek() != i) {
-                        side.push(top.pop());
-                    }
-                    if (top.empty()) {
-                        flag = false;
-                        break;
-                    } else {
-                        top.pop();
-                        i++;                        
-                    }
+            num.ptr = -1;
+            String s = readLine();
+            
+            int keys = readInt();
+            PriorityQueue<Integer> pq = new PriorityQueue<>();
+            for (int i = 0; i < s.length(); i++) {
+                int curr = s.charAt(i) - '0';
+                while (keys > 0 && !num.empty() && curr < num.peek()) {
+                    pq.add(num.pop());
+                    keys--;
                 }
+                num.push(curr);
             }
-            System.out.println(flag ? "Y" : "N");
+            
+            while (keys-- > 0 && !num.empty()) {
+                pq.add(num.pop());
+            }
+            
+            StringBuilder res = new StringBuilder();
+            for (int i = 0; i <= num.ptr; i++) res.append(num.stack[i]);
+            while (!pq.isEmpty()) res.append(pq.poll());
+            
+            System.out.println(res);
         }
     }
-
+    
     static String next() throws IOException {
         while (in == null || !in.hasMoreTokens())
             in = new StringTokenizer(br.readLine());
@@ -65,31 +66,36 @@ public class ccc14s3 {
 }
 
 class stacki {
-    private int[] stack;
-    private int ptr;    
+    int[] stack;
+    int ptr;
+
     public stacki(int maxSize) {
         stack = new int[maxSize];
         ptr = -1;
     }
-    
+
     public boolean empty() {
         return ptr == -1;
     }
-    
+
     public int size() {
         return ptr + 1;
     }
-    
+
     public void push(int x) {
         stack[++ptr] = x;
     }
-    
+
     public int peek() {
         return stack[ptr];
     }
-    
+
     public int pop() {
         return stack[ptr--];
+    }
+
+    public int get(int index) {
+        return stack[ptr - index];
     }
 
     @Override
@@ -99,7 +105,7 @@ class stacki {
             res.append(stack[i]);
             res.append(", ");
         }
-        if (ptr >= 0 ) {
+        if (ptr >= 0) {
             res.append(stack[ptr]);
         }
         return res.append("]").toString();
