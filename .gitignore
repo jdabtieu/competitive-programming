@@ -1,7 +1,11 @@
-# Eclipse files
+# IDE files
 bin/
+obj/
 .classpath
 .project
+*.cbp
+*.workspace
+*.workspace.layout
 
 # Incomplete problems
 /Misc DMOJ/rollencrypt/
