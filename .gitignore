@@ -6,6 +6,8 @@ obj/
 *.cbp
 *.workspace
 *.workspace.layout
+*.layout
+*.depend
 
 # Incomplete problems
 /Misc DMOJ/rollencrypt/
