@@ -29,11 +29,8 @@ public class xorm {
                 int cb = (num >> j) & 1;
                 if (curr.child[cb] != null) curr = curr.child[cb];
                 else curr = curr.child[(~cb) & 1];
-                if (curr.idx < 2000000000) {
-                    System.out.println(curr.idx);
-                    break;
-                }
             }
+            System.out.println(curr.idx);
         }
     }
     
