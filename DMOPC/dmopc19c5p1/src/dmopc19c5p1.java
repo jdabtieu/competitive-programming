@@ -1,31 +1,31 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.StringTokenizer;
-
-public class dmopc14c2p4 {
-	/* 
-	 * Copy-pasting code is NOT cool! Please do not copy and paste my code as a submission to DMOJ.
-	 * github.com/jdabtieu/competitive-programming
-	 */
+import java.io.*;
+import java.util.*;
+public class dmopc19c5p1 {
+  	/* 
+	   * Copy-pasting code is NOT cool! Please do not copy and paste my code as a submission to DMOJ.
+	   * github.com/jdabtieu/competitive-programming
+	   */
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     static StringTokenizer in;
     
     public static void main(String[] args) throws IOException {
-        int n = readInt();
-        int[] psa = new int[n];
-        for (int i = 0; i < n; i++) {
-            psa[i] = readInt();
+        int items = readInt(), tasks = readInt();
+        ArrayList<String> list = new ArrayList<>();
+        for (int i = 0; i < items; i++) {
+            list.add(readLine());
         }
-        for (int i = 1; i < n; i++) {
-            psa[i] += psa[i-1];
+        int cnt = 0;
+        for (int i = 0; i < tasks; i++) {
+            int required = readInt();
+            boolean found = true;
+            for (int j = 0; j < required; j++) {
+                if (!list.contains(readLine())) {
+                    found = false;
+                }
+            }
+            if (found) cnt++;
         }
-        int q = readInt();
-        for (int i = 0; i < q; i++) {
-            int left = readInt() - 1, right = readInt();
-            if (left == -1) System.out.println(psa[right]);
-            else System.out.println(psa[right] - psa[left]);
-        }
+        System.out.println(cnt);
     }
     
     static String next() throws IOException {
