@@ -1,68 +1,62 @@
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.StringTokenizer;
-
+import java.io.*;
+import java.util.*;
 public class globexcup18j3 {
-	/* 
-	 * Copy-pasting code is NOT cool! Please do not copy and paste my code as a submission to DMOJ.
-	 * github.com/jdabtieu/competitive-programming
-	 */
-    static final int MAX_SIZE = 100001;
-    static ArrayList<Boolean>primality = new ArrayList<>(MAX_SIZE);
-	static ArrayList<Integer>primeNumbers = new ArrayList<>();
-	static ArrayList<Integer>primeFactors = new ArrayList<>(MAX_SIZE);
-    static void sieveEnhanced(int ceiling) {
-        for (int i = 0; i < MAX_SIZE; i++) {
-            primality.add(true);
-            primeFactors.add(2);
-        }
-        primality.set(0, false);
-        primality.set(1, false);
-        
-        //Populate primeNumbers and factors if i is prime
-        for (int i = 2; i < ceiling; i++) {
-            if (primality.get(i) == true) {
-                primeNumbers.add(i);
-                primeFactors.set(i,i);
+  	/* 
+	   * Copy-pasting code is NOT cool! Please do not copy and paste my code as a submission to DMOJ.
+	   * github.com/jdabtieu/competitive-programming
+	   */
+    static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    static StringTokenizer in;
+    
+    public static void main(String[] args) throws IOException {
+        int n = readInt(), cnt = 0;
+        for (int i = 0; i < n; i++) {
+            int num = readInt();
+            int digitSum = 0, copy = num;
+            while (copy > 0) {
+                digitSum += copy % 10;
+                copy /= 10;
             }
-            
-            for (int j = 0; j < primeNumbers.size() && i * primeNumbers.get(j) < ceiling && primeNumbers.get(j) <= primeFactors.get(i); j++) { 
-                primality.set(i * primeNumbers.get(j), false);
-                primeFactors.set(i * primeNumbers.get(j), primeNumbers.get(j));
+            if (check(num) && check(digitSum)) {
+                cnt++;
             }
         }
-    }
-      
-    static public byte numberSum(int numb) {
-        int sum = 0;
-        while (numb > 0) {
-            sum += numb % 10;
-            numb /= 10;
-        }
-        return (byte) sum;
+        System.out.println(cnt);
     }
     
-    public static void main(String args[]) throws IOException { 
-       sieveEnhanced(100000);
-       BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-       StringTokenizer in = new StringTokenizer(br.readLine());
-       short goodPrimes = 0;
-       for (short i = Short.parseShort(in.nextToken()); i > 0; i--) {
-    	   in = new StringTokenizer(br.readLine());
-    	   int number = Integer.parseInt(in.nextToken());
-    	   if (primeNumbers.contains(number)) {
-    		   byte digitSum = numberSum(number);
-    		   for (byte j = 0; j < 18; j++) {
-    			   if (primeNumbers.get(j) == digitSum) {
-    				   goodPrimes++;
-    				   j = 50;
-    			   }
-    		   }
-    	   }
-       }
-       System.out.println(goodPrimes);
-    } 
-
+    static boolean check(int num) {
+        if (num < 2) return false;
+        for (int j = 2; j <= Math.sqrt(num); j++) {
+            if (num % j == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+    
+    static String next() throws IOException {
+        while (in == null || !in.hasMoreTokens())
+            in = new StringTokenizer(br.readLine());
+        return in.nextToken();
+    }
+    
+    static long readLong() throws IOException {
+        return Long.parseLong(next());
+    }
+    
+    static int readInt() throws IOException {
+        return Integer.parseInt(next());
+    }
+    
+    static double readDouble() throws IOException {
+        return Double.parseDouble(next());
+    }
+    
+    static char readChar() throws IOException {
+        return next().charAt(0);
+    }
+    
+    static String readLine() throws IOException {
+        return br.readLine();
+    }
 }
