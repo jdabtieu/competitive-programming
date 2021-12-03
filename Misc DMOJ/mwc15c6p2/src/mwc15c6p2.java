@@ -6,49 +6,65 @@ public class mwc15c6p2 {
 	 * Copy-pasting code is NOT cool! Please do not copy and paste my code as a submission to DMOJ.
 	 * github.com/jdabtieu/competitive-programming
 	 */
-	static final int MAX_SIZE = 10011;
-    static ArrayList<Boolean>primality = new ArrayList<>(MAX_SIZE);
-	static ArrayList<Integer>primeNumbers = new ArrayList<>();
-	static ArrayList<Integer>primeFactors = new ArrayList<>(MAX_SIZE);
+    static boolean[] prime = new boolean[10001];
+    // 0-10000
     
-	static void sieveEnhanced(int ceiling) {
-        for (int i = 0; i < MAX_SIZE; i++) {
-        	primality.add(true);
-            primeFactors.add(2);
-        }
-        primality.set(0, false);
-        primality.set(1, false);
-        
-        for (int i = 2; i < ceiling; i++) {
-            if (primality.get(i) == true) {
-                primeNumbers.add(i);
-                primeFactors.set(i,i);
+    static void sieve() {
+        Arrays.fill(prime, true);
+        prime[0] = false;
+        prime[1] = false;
+        for (int i = 2; i <= Math.sqrt(10000); i++) {
+            if (prime[i]) {
+                for (int j = i * i; j <= 10000; j += i) {
+                    prime[j] = false;
+                }
             }
-            
-            for (int j = 0; j < primeNumbers.size() && i * primeNumbers.get(j) < ceiling && primeNumbers.get(j) <= primeFactors.get(i); j++) { 
-                primality.set(i * primeNumbers.get(j), false);
-                primeFactors.set(i * primeNumbers.get(j), primeNumbers.get(j));
+        }
+    }
+    public static void main(String[] args) throws IOException {
+        sieve();
+        
+        
+        int q = readInt();
+        for (int i = 0; i < q; i++) {
+            int right = readInt();
+            boolean ans = false;
+            for (int j = right - 1; j > 0; j--) {
+                if (prime[j]) {
+                    System.out.println(j);
+                    ans = true;
+                    break;
+                }
+            }
+            if (ans == false) {
+                System.out.println("no can do");
             }
         }
     }
     
-	public static void main(String args[]) throws IOException {
-		sieveEnhanced(10010);
-		
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		StringTokenizer in = new StringTokenizer(br.readLine());
-		
-		int competitors = Integer.parseInt(in.nextToken());
-		in = new StringTokenizer(br.readLine());
-		for (int i = 0; i < competitors; i++) {
-			int ceiling = Integer.parseInt(in.nextToken());
-			int e = 1;
-			if (ceiling < 3) System.out.println("no can do");
-			else {
-				while (primeNumbers.get(e) < ceiling) e++;
-				System.out.println(primeNumbers.get(e - 1));
-			}
-		}
-	}
-
+    static String next() throws IOException {
+        while (in == null || !in.hasMoreTokens())
+            in = new StringTokenizer(br.readLine());
+        return in.nextToken();
+    }
+    
+    static long readLong() throws IOException {
+        return Long.parseLong(next());
+    }
+    
+    static int readInt() throws IOException {
+        return Integer.parseInt(next());
+    }
+    
+    static double readDouble() throws IOException {
+        return Double.parseDouble(next());
+    }
+    
+    static char readChar() throws IOException {
+        return next().charAt(0);
+    }
+    
+    static String readLine() throws IOException {
+        return br.readLine();
+    }
 }

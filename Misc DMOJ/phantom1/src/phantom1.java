@@ -1,36 +1,37 @@
 import java.io.*;
 import java.util.*;
-public class phantom2 {
+public class phantom1 {
 	/* 
 	 * Copy-pasting code is NOT cool! Please do not copy and paste my code as a submission to DMOJ.
 	 * github.com/jdabtieu/competitive-programming
 	 */
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     static StringTokenizer in;
-
-    static int[] psa = new int[1000001];
+    
     public static void main(String[] args) throws IOException {
-        sieve(1000000);
+        boolean[] primes = sieve(500);
         for (int n = readInt(); n > 0; n--) {
-            int l = readInt(), r = readInt();
-            System.out.println(psa[r - 1] - psa[l - 1]);
+            int l = readInt(), r = readInt(), cnt = 0;
+            for (int i = l; i < r; i++) {
+                if (primes[i]) cnt++;
+            }
+            System.out.println(cnt);
         }
     }
     
-    static void sieve(int lim) {
-        Arrays.fill(psa, 1);
-        psa[0] = 0;
-        psa[1] = 0;
+    static boolean[] sieve(int lim) {
+        boolean[] prime = new boolean[lim + 1];
+        Arrays.fill(prime, true);
+        prime[0] = false;
+        prime[1] = false;
         for (int i = 2; i <= Math.sqrt(lim); i++) {
-            if (psa[i] == 1) {
+            if (prime[i]) {
                 for (int j = i * i; j <= lim; j += i) {
-                    psa[j] = 0;
+                    prime[j] = false;
                 }
             }
         }
-        for (int i = 3; i <= 1000000; i++) {
-            psa[i] += psa[i - 1];
-        }
+        return prime;
     }
     
     static String next() throws IOException {
