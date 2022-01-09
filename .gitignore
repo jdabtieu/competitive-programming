@@ -10,7 +10,6 @@ obj/
 *.depend
 
 # Incomplete problems
-/Misc DMOJ/rollencrypt/
 /Atcoder DP/dpy/
 /Misc DMOJ/halfgrid/
 /DWITE/dwite08c1p3/
