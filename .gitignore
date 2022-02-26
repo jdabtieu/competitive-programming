@@ -12,10 +12,8 @@ obj/
 # Incomplete problems
 /Atcoder DP/dpy/
 /Misc DMOJ/halfgrid/
-/DWITE/dwite08c1p3/
 /DMOPC/7 DMOPC 18 Contest 4 Dr Henri and Responsibility/
 /DMOPC/7 DMOPC 18 Contest 5 A Photography Problem/
-/CCC/15 CCC 03 S4 Substrings/
 /CCO/cco08p5/
 CCC/ccc21s4/
 CCC/ccc14s5/
@@ -23,3 +21,7 @@ COCI/coci18c1p4/
 COCI/coci19c4p2/
 Summer Institute/si17c3p5/
 /IOI/ioi13p4/
+SAC/sac22cc1p4/
+USACO/usaco21febs1/
+/Misc DMOJ/ccoprep3p2/
+/IOI/ioi02p4/
