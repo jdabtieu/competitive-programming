@@ -93,7 +93,7 @@ int main() {
         for (int i = t; i <= b; i++) {
             for (int j = l; j < r; j++) {
                 pc(g[n][i][j] ? '*' : ' ');
-                if (j != r) pc(' ');
+                if (j != r - 1) pc(' ');
             }
             pc('\n');
         }

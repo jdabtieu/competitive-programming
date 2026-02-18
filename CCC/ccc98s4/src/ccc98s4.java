@@ -1,10 +1,6 @@
 import java.io.*;
 import java.util.*;
-public class Lottery {
-	/* 
-	 * Copy-pasting code is NOT cool! Please do not copy and paste my code as a submission to DMOJ.
-	 * github.com/jdabtieu/competitive-programming
-	 */
+public class ccc98s4 {
 	public static void main(String[] args) throws IOException{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	for (int cases = Integer.parseInt(new StringTokenizer(br.readLine()).nextToken()); cases > 0; cases--) {
@@ -30,10 +26,8 @@ public class Lottery {
 		}
 		
 		if (tokens.size() > 1) System.out.println(tokens.get(tokens.size() - 2) + " " + tokens.get(tokens.size() - 1));
-		
 		if (tokens.size() == 1) System.out.println(tokens.get(0));
-		
-		System.out.println();
+		if (cases != 1) System.out.println();
 	}
 	}
 }

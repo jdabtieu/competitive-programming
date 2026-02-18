@@ -21,8 +21,8 @@ public class ccc05j1 {
         planB += 35 * e;
         planB += 25 * w;
         
-        System.out.println("Plan A costs " + planA/100.0);
-        System.out.println("Plan B costs " + planB/100.0);
+        System.out.printf("Plan A costs %.2f\n", planA/100.0);
+        System.out.printf("Plan B costs %.2f\n", planB/100.0);
         if (planA < planB) {
             System.out.println("Plan A is cheapest.");
         } else if (planA == planB) {

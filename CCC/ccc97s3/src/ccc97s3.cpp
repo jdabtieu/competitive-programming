@@ -67,6 +67,7 @@ int main() {
         r++;
         printf("Round %d: %d undefeated, %d one-loss, %d eliminated\n", r, u, o, e);
         printf("There are %d rounds.\n", r);
+        if (T) printf("\n");
     }
 
 }

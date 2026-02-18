@@ -1,88 +1,73 @@
-import java.util.*;
 import java.io.*;
-
-public class ccc01s3 {
-    /* 
-     * Copy-pasting code is NOT cool! Please do not copy and paste my code as a submission to DMOJ.
-     * github.com/jdabtieu/competitive-programming
-     */
+import java.util.*;
+public class _ccc01s3 {
     static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     static StringTokenizer in;
-
-    static ArrayList<ArrayList<Integer>> graph = new ArrayList();
-    static ArrayList<ArrayList<Integer>> counter = new ArrayList();
-    static boolean[] visited = new boolean[26];
+    
+    static HashSet<Integer>[] adj = new HashSet[26];
+    static boolean[] vis;
     
     public static void main(String[] args) throws IOException {
-        for (int i = 0; i < 26; i++) {
-            graph.add(new ArrayList());
-            counter.add(new ArrayList());
+        for (int i = 0; i < 26; i++) adj[i] = new HashSet<>();
+        ArrayList<String> paths = new ArrayList<>();
+        while (true) {
+            String s = readLine();
+            if (s.equals("**")) break;
+            int one = s.charAt(0) - 'A';
+            int two = s.charAt(1) - 'A';
+            adj[one].add(two);
+            adj[two].add(one);
+            paths.add(s);
         }
-        {
-            String input = readLine();
-            while (!input.equals("**")) {
-                int a = input.charAt(0) - 'A', b = input.charAt(1) - 'A';
-                graph.get(a).add(b);
-                graph.get(b).add(a);
-                counter.get(a).add(0);
-                counter.get(b).add(0);
-                input = readLine();
-            }
+        
+        ArrayList<String> ans = new ArrayList<>();
+        for (String s : paths) {
+            int one = s.charAt(0) - 'A';
+            int two = s.charAt(1) - 'A';
+            adj[one].remove(two);
+            adj[two].remove(one);
+            vis = new boolean[26];
+            f(0);
+            if (!vis[1]) ans.add(s);
+            adj[one].add(two);
+            adj[two].add(one);
         }
-        visited[0] = true;
-        int total = recurse(0);
-        if (total == 0) {
-            System.out.println("There are 0 disconnecting roads.");
-            return;
+        for (String s : ans) {
+            System.out.println(s);
         }
-        ArrayList<String> roads = new ArrayList();
-        for (int i = 0; i < 26; i++) {
-            for (int j = 0; j < graph.get(i).size(); j++) {
-                if (counter.get(i).get(j) == total) roads.add((char) (i + 'A') + "" + (char) (graph.get(i).get(j) + 'A'));
-            }
-        }
-        for (String e : roads) {
-            System.out.println(e);
-        }
-        System.out.println("There are " + roads.size() + " disconnecting roads.");
+        System.out.println("There are " + ans.size() + " disconnecting roads.");
     }
     
-    static int recurse(int start) {
-        if (start == 1) return 1;
-        int total = 0;
-        for (int i = 0; i < graph.get(start).size(); i++) {
-            if (!visited[graph.get(start).get(i)]) {
-                visited[graph.get(start).get(i)] = true;
-                int res = recurse(graph.get(start).get(i));
-                counter.get(start).set(i, res + counter.get(start).get(i));
-                visited[graph.get(start).get(i)] = false;
-                total += res;
-            }
+    static void f(int curr) {
+        for (int node : adj[curr]) {
+            if (vis[node]) continue;
+            vis[node] = true;
+            f(node);
         }
-        return total;
     }
+    
     static String next() throws IOException {
         while (in == null || !in.hasMoreTokens())
             in = new StringTokenizer(br.readLine());
         return in.nextToken();
     }
-
+    
     static long readLong() throws IOException {
         return Long.parseLong(next());
     }
-
+    
     static int readInt() throws IOException {
         return Integer.parseInt(next());
     }
-
+    
     static double readDouble() throws IOException {
         return Double.parseDouble(next());
     }
-
+    
     static char readChar() throws IOException {
         return next().charAt(0);
     }
-
+    
     static String readLine() throws IOException {
         return br.readLine();
     }

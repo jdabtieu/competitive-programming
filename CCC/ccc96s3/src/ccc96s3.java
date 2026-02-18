@@ -16,7 +16,7 @@ public class ccc96s3 {
             for (String e : recurse(n, k)) {
                 System.out.println(e);
             }
-            System.out.println();
+            if (cases != 1) System.out.println();
         }
     }
     

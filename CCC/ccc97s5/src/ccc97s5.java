@@ -1,11 +1,8 @@
 import java.io.*;
 import java.util.*;
-public class Division {
-	/* 
-	 * Copy-pasting code is NOT cool! Please do not copy and paste my code as a submission to DMOJ.
-	 * github.com/jdabtieu/competitive-programming
-	 */
-	public static void divFunction (ArrayList<Byte> dividend, ArrayList<Byte> divisor) throws ClassNotFoundException {
+public class ccc97s5 {
+	
+	public static void divFunction (ArrayList<Byte> dividend, ArrayList<Byte> divisor) {
 		int lengthA = dividend.size(), lengthB = divisor.size();
 		@SuppressWarnings("unchecked")
 		ArrayList<Byte> modifiedDivisor = (ArrayList<Byte>) divisor.clone();
@@ -58,7 +55,7 @@ public class Division {
 		for (int i = 0; i < dividend.size(); i++) {
 			System.out.print(dividend.get(i));
 		}
-		System.out.println("\n");
+		System.out.println();
 	}
 	
 	public static boolean dividendLargerEqualToModifiedDivisor (ArrayList<Byte> dividend, ArrayList<Byte> modifiedDivisor) {
@@ -69,34 +66,33 @@ public class Division {
 		return true;
 	}
 	
-	public static ArrayList<Byte> subtract (ArrayList<Byte> dividend, ArrayList<Byte> modifiedDivisor) throws ClassNotFoundException {
+	public static ArrayList<Byte> subtract (ArrayList<Byte> dividend, ArrayList<Byte> modifiedDivisor) {
 		ArrayList<Byte> result = new ArrayList<Byte>();
 		for (int i = 0; i < dividend.size(); i++) result.add((byte) 0);
 		for (int i = dividend.size() - 1; i >= 0; i--) {
 			if (dividend.get(i) >= modifiedDivisor.get(i)) {
 				if (result.get(i) == -1 && dividend.get(i) - modifiedDivisor.get(i) == 0) {
 					result.set(i, (byte) (result.get(i) + 10 + dividend.get(i) - modifiedDivisor.get(i)));
-					if (i == 0) throw new ClassNotFoundException();
-					else result.set(i-1, (byte) (result.get(i-1)-1));
+					result.set(i-1, (byte) (result.get(i-1)-1));
 				}
 				else result.set(i, (byte) (result.get(i) + dividend.get(i) - modifiedDivisor.get(i)));
 			} else {
 				result.set(i, (byte) (result.get(i) + 10 + dividend.get(i) - modifiedDivisor.get(i)));
-				if (i == 0) throw new ClassNotFoundException();
-				else result.set(i-1, (byte) (result.get(i-1)-1));
+				result.set(i-1, (byte) (result.get(i-1)-1));
 			}
 		}
 		
 		return result;
 	}
 
-	public static void main(String[] args) throws IOException, ClassNotFoundException {
+	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	    for (int cases = Integer.parseInt(br.readLine()); cases > 0; cases--) {
 	    	String a = br.readLine();
 	    	String b = br.readLine();
 	    	if (b.length() > a.length() ) {
-	    		System.out.println(0 + "\n" + a + "\n");
+	    		System.out.println(0 + "\n" + a);
+	    		if (cases != 1) System.out.println();
 	    	} else {
 	    		ArrayList<Byte> la = new ArrayList<Byte>();
 		    	ArrayList<Byte> lb = new ArrayList<Byte>();
@@ -110,6 +106,7 @@ public class Division {
 		    		lb.add(0, (byte) 0);
 		    	}
 		    	divFunction(la, lb);
+		    	if (cases != 1) System.out.println();
 	    	}
 	    	
 	    }

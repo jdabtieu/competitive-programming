@@ -34,29 +34,30 @@ typedef __uint128_t lllu;
 typedef __int128_t lll;
 
 using namespace std;
-/*
- * Copy-pasting code is NOT cool! Please do not copy and paste my code as a submission to DMOJ.
- * github.com/jdabtieu/competitive-programming
- */
-int len[2000001];
-ll dp[2000001];
-ll lsum[2000001];
+
 int main() {
-    int n = si(), L = si();
-    for (int i = 1; i <= n; i++) len[i] = si();
-    fill(dp, dp+n+1, 0x7fffffffffffffff);
-    dp[0] = 0;
-    for (int i = 1; i <= n; i++) lsum[i] = lsum[i-1] + len[i];
-    int prevj = 0;
-    for (int i = 1; i <= n; i++) {
-        for (int j = prevj; j <= i; j++) {
-            ll leng = i - j - 1 + lsum[i] - lsum[j];
-            ll ans = dp[j] + (leng - L) * (leng - L);
-            if (ans < dp[i]) {
-                dp[i] = ans;
-                prevj = j;
-            }
+    int n = su(), m = su(), c = su();
+    priority_queue<pii, vector<pii>, greater<pii>> minq;
+    priority_queue<pii> maxq;
+    for (int i = 1; i < m; i++) {
+        pii cur = {su(), i};
+        minq.emplace(cur);
+        maxq.emplace(cur);
+    }
+    bool found = false;
+    for (int i = m; i <= n; i++) {
+        pii cur = {su(), i};
+        minq.emplace(cur);
+        maxq.emplace(cur);
+        while (minq.top().second <= i - m) minq.pop();
+        int mv = minq.top().first;
+        while (maxq.top().second <= i - m) maxq.pop();
+        int mv2 = maxq.top().first;
+        if (mv2 - mv <= c) {
+            cout << i - m + 1 << "\n";
+            found = true;
         }
     }
-    printf("%lld\n", dp[n]);
+
+    if (!found) cout << "NONE\n";
 }
